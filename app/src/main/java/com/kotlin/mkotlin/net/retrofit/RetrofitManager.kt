@@ -1,6 +1,6 @@
 package com.shehuan.wanandroid.base.net
 
-import com.shehuan.wanandroid.base.Const
+import com.kotlin.mkotlin.net.ConstServer
 import com.shehuan.wanandroid.base.net.interceptor.AddCookiesInterceptor
 import com.shehuan.wanandroid.base.net.interceptor.SaveCookiesInterceptor
 import okhttp3.OkHttpClient
@@ -21,7 +21,7 @@ object RetrofitManager {
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(Const.WAN_ANDROID_UTL)
+                .baseUrl(ConstServer.SERVER_URL)
                 .build()
         return retrofit.create(service)
     }

@@ -2,13 +2,13 @@ package com.shehuan.wanandroid.utils.sp
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.shehuan.wanandroid.App
+import com.kotlin.mkotlin.KotlinApp
 import kotlin.IllegalArgumentException
 
 object SharedPreferencesHelper {
 
     private val sharedPreferences: SharedPreferences by lazy {
-        App.getApp().getSharedPreferences("ksp", Context.MODE_PRIVATE)
+        KotlinApp.getApp().getSharedPreferences("ksp", Context.MODE_PRIVATE)
     }
 
     fun put(key: String, value: Any) = with(sharedPreferences.edit()) {
