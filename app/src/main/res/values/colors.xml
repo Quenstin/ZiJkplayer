@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="min_bunk">#0D9AFB</color>
+    <color name="min_item1">#45BBFD</color>
+    <color name="min_item2">#77CBFE</color>
+    <color name="min_item3">#AADCFE</color>
+    <color name="app_text">#2D3436</color>
 </resources>

@@ -37,7 +37,6 @@ abstract class BaseFragment :Fragment(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initData()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -53,6 +52,7 @@ abstract class BaseFragment :Fragment(){
         super.onActivityCreated(savedInstanceState)
 
         isViewCreated = true
+        initData()
         tryLoadData()
     }
 

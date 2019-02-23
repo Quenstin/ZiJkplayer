@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ZIjkplayer</string>
+    <string name="error_message">出了点小问题，请稍后重试</string>
+    <string name="zplayer_retry">重试一下啊</string>
+    <string name="wifi_tip">再看就要流量啦</string>
+    <string name="continue_play">继续播放</string>
+</resources>

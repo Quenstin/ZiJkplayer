@@ -28,8 +28,8 @@ abstract class BaseActivity : AppCompatActivity() {
         setContentView(getLayoutId())
         mContext=this
 
-        initData()
         initView()
+        initData()
         initLoad()
     }
 

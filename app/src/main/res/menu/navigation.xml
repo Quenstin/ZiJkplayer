@@ -5,19 +5,19 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_homepage"
-        android:title="首页" />
+        android:title="@string/home_one" />
     <item
         android:id="@+id/navigation_dashboard"
         android:icon="@drawable/ic_createtask"
-        android:title="项目" />
+        android:title="@string/home_tow" />
     <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_manage"
-        android:title="体系" />
+        android:title="@string/home_three" />
     <item
         android:id="@+id/navigation_person"
         android:icon="@drawable/ic_coordinates"
-        android:title="导航" />
+        android:title="@string/home_min" />
 
 
 

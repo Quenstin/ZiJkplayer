@@ -1,7 +1,5 @@
 package com.kotlin.mkotlin.ui.activity
 
-import android.support.design.widget.BottomNavigationView
-import android.support.design.widget.NavigationView
 import android.support.v4.view.ViewPager
 import android.view.MenuItem
 import com.kotlin.mkotlin.R
@@ -17,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
-    private lateinit var menuItem: MenuItem
+    private var menuItem: MenuItem?=null
     override fun initData() {
     }
 
@@ -39,8 +37,6 @@ class MainActivity : BaseActivity() {
         //初始化底部导航
         mBottomView.setOnNavigationItemSelectedListener { p0 ->
             menuItem = p0
-
-
 
             when (p0.itemId) {
 
@@ -64,13 +60,9 @@ class MainActivity : BaseActivity() {
 
             override fun onPageSelected(p0: Int) {
 
-                if (menuItem != null) {
-                    menuItem.isChecked = false
-                } else {
-                    mBottomView.menu.getItem(0).isChecked = false
-                }
+                menuItem?.isChecked = false
                 menuItem = mBottomView.menu.getItem(p0)
-                menuItem.isChecked = true
+                menuItem?.isChecked = true
 
             }
 

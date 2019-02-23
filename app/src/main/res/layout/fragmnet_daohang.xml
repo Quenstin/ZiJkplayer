@@ -1,11 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="导航"
-        />
+        android:layout_height="match_parent">
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:layout_width="match_parent"
+            app:srlAccentColor="@color/min_bunk"
+            android:layout_height="wrap_content"
+            app:srlPrimaryColor="@color/min_bunk"
+            />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/minImageHean"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/min_bunk"
+            app:layout_constraintDimensionRatio="h,15:7" />
+
+        <ImageView
+            android:id="@+id/minIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="@+id/minImageHean"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/rlGitHub"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/min_item1"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/minImageHean">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+
+                android:text="GitHub"
+                android:textColor="@color/app_text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+
+                android:text="@string/min_Git"
+                android:textColor="@color/app_text" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlJianShu"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/min_item3"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/rlGitHub">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:text="简书"
+                android:textColor="@color/app_text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+
+                android:text="@string/min_jianshu"
+                android:textColor="@color/app_text" />
+
+
+        </RelativeLayout>
+        </android.support.constraint.ConstraintLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+
 
 </android.support.constraint.ConstraintLayout>
