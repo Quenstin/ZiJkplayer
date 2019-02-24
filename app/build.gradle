@@ -21,12 +21,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
         }
+
     }
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['libs']
-        }
-    }
+
 }
 
 dependencies {
@@ -69,7 +66,13 @@ dependencies {
     //相机库
     implementation 'com.github.vondear.RxTool:RxCamera:v2.2.7'
 
-    implementation project(':ijkplayerso')
+    implementation project(':zijkplayer')
+    implementation project(':zplayer-arm64')
+    implementation project(':zplayer-armv5')
+    implementation project(':zplayer-armv7a')
+    implementation project(':zplayer-x86')
+    implementation project(':zplayer-x86_64')
+
 
 
 }
