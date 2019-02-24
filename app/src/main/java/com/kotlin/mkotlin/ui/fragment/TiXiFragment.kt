@@ -1,6 +1,8 @@
 package com.kotlin.mkotlin.ui.fragment
 
+import android.view.MenuItem
 import com.example.zijkplayer.voidcontroller.LiveVideoController
+import com.example.zijkplayer.voidplayer.IjkVideoView
 import com.example.zijkplayer.voidplayer.PlayerConfig
 import com.kotlin.mkotlin.R
 import com.kotlin.mkotlin.base.BaseFragment
@@ -31,6 +33,7 @@ class TiXiFragment : BaseFragment() {
 //                    .setCustomMediaPlayer(new ExoMediaPlayer(this))
 //                    .setCustomMediaPlayer(new AndroidMediaPlayer(this))
                 .build())
+        zLiveView.setScreenScale(IjkVideoView.SCREEN_SCALE_16_9)
         zLiveView.setUrl(LIVE_URL)
         zLiveView.setVideoController(controller)
         zLiveView.start()
@@ -61,20 +64,26 @@ class TiXiFragment : BaseFragment() {
         zLiveView.release()
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            activity!!.finish()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
+
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if (zLiveView != null)
             if (isVisibleToUser) {
-                zLiveView.start()
-            } else {
                 if (zLiveView.isPlaying)
                     zLiveView.release()
+
+            } else {
+                zLiveView.start()
             }
     }
 
-    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        super.setUserVisibleHint(isVisibleToUser)
 
-
-    }
 }

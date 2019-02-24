@@ -30,6 +30,7 @@ class MainActivity : BaseActivity() {
         //初始化适配器
         val viewPagerAdapter = MainViewPagerAdapter(supportFragmentManager)
         viewPagerAdapter.setFragments(fragments)
+        mainViewPager.setScanScroll(false)
         mainViewPager.adapter = viewPagerAdapter
         mainViewPager.offscreenPageLimit = fragments.size
 
