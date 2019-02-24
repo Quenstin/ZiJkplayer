@@ -26,6 +26,7 @@ public class ShowProcessView extends LinearLayout {
 
     public ShowProcessView(Context context) {
         super(context);
+        init();
     }
 
     private void init() {

@@ -24,7 +24,7 @@ public class ErrorView extends LinearLayout{
     private float downX;
     private float downY;
     public ErrorView(Context context) {
-        super(context);
+        this(context,null);
     }
 
     public ErrorView(Context context, @Nullable AttributeSet attrs) {
