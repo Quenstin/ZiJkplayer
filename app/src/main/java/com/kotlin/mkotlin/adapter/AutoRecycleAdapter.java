@@ -1,10 +1,8 @@
 package com.kotlin.mkotlin.adapter;
 
-import android.content.Context;
 import android.support.annotation.Nullable;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.zijkplayer.voidcontroller.LiveVideoController;
@@ -13,7 +11,6 @@ import com.example.zijkplayer.voidplayer.PlayerConfig;
 import com.kotlin.mkotlin.R;
 import com.kotlin.mkotlin.bean.VideoBean;
 import com.kotlin.mkotlin.utlis.GlideApp;
-import com.kotlin.mkotlin.utlis.ZGlideModule;
 
 import java.util.List;
 

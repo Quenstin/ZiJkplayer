@@ -18,7 +18,7 @@ class TiXiFragment : BaseFragment() {
     //标志位，标志已经初始化完成
     var isInit = false
     var controller: LiveVideoController? = null
-    protected var mHasLoadedOnce: Boolean = false
+    var mHasLoadedOnce: Boolean = false
     private val LIVE_URL = "http://ivi.bupt.edu.cn/hls/cctv6.m3u8"
 
 
@@ -34,7 +34,6 @@ class TiXiFragment : BaseFragment() {
                 .build())
         zLiveView.setScreenScale(IjkVideoView.SCREEN_SCALE_16_9)
         zLiveView.setUrl(LIVE_URL)
-        zLiveView.setVideoController(controller)
 //        zLiveView.start()
     }
 
@@ -54,10 +53,10 @@ class TiXiFragment : BaseFragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             activity!!.finish()
-            if (zLiveView.isPlaying){
+            if (zLiveView.isPlaying) {
                 zLiveView.stopPlayback()
                 zLiveView.release()
-                Log.e("播放器","----------stop--")
+                Log.e("播放器", "----------stop--")
 
             }
         }
@@ -67,7 +66,7 @@ class TiXiFragment : BaseFragment() {
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        Log.e("播放器","----------ss--")
+        Log.e("播放器", "----------ss--")
 
     }
 
@@ -76,15 +75,17 @@ class TiXiFragment : BaseFragment() {
         isCanLoadData()
         if (zLiveView != null)
             if (isVisibleToUser) {
+                zLiveView.setScreenScale(IjkVideoView.SCREEN_SCALE_16_9)
+                zLiveView.setVideoController(controller)
                 zLiveView.start()
-                Log.e("播放器","----------star--")
+                Log.e("播放器", "----------star--")
 
 
             } else {
-                if (zLiveView.isPlaying){
+                if (zLiveView.isPlaying) {
                     zLiveView.stopPlayback()
                     zLiveView.release()
-                    Log.e("播放器","----------stop--")
+                    Log.e("播放器", "----------stop--")
 
                 }
 

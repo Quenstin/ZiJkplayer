@@ -2,7 +2,6 @@ package com.kotlin.mkotlin.ui.fragment
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.view.View
 import com.kotlin.mkotlin.R
 import com.kotlin.mkotlin.base.BaseFragment
 import kotlinx.android.synthetic.main.fragmnet_daohang.*
@@ -23,6 +22,11 @@ class DaoHangFragment : BaseFragment() {
     }
 
     override fun initData() {
+        minIcon.setImageResource(R.mipmap.circle_heart_circle)
+        txtName.text = "姓名： 朱国庆"
+        txtWork.text="职位： Android开发"
+        txtWorkAge.text="开发工龄： 4年"
+
 
     }
 

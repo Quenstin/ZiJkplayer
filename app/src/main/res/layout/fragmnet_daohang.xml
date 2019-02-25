@@ -28,24 +28,51 @@
             android:id="@+id/minIcon"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/colorAccent"
+            android:layout_marginLeft="20dp"
             app:layout_constraintBottom_toBottomOf="@+id/minImageHean"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                app:layout_constraintLeft_toRightOf="@+id/minIcon"
+                app:layout_constraintTop_toTopOf="@+id/minIcon"
+                android:layout_marginLeft="25dp"
+                />
+            <TextView
+                android:id="@+id/txtWork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                app:layout_constraintLeft_toRightOf="@+id/minIcon"
+                app:layout_constraintTop_toBottomOf="@+id/txtName"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                />
+            <TextView
+                android:id="@+id/txtWorkAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                app:layout_constraintLeft_toRightOf="@+id/minIcon"
+                app:layout_constraintTop_toBottomOf="@+id/txtWork"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                />
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/rlGitHub"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/min_item1"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@+id/minImageHean">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
                 android:layout_marginLeft="20dp"
                 android:gravity="center"
 
@@ -55,45 +82,43 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
                 android:gravity="center"
 
                 android:text="@string/min_Git"
                 android:textColor="@color/app_text" />
 
 
-        </RelativeLayout>
+        </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/rlJianShu"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/min_item3"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@+id/rlGitHub">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
                 android:layout_marginLeft="20dp"
                 android:gravity="center"
-                android:text="简书"
+                android:text="简     书"
                 android:textColor="@color/app_text" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
                 android:gravity="center"
-
+                android:lines="1"
+                android:maxLines="1"
                 android:text="@string/min_jianshu"
                 android:textColor="@color/app_text" />
 
 
-        </RelativeLayout>
+        </LinearLayout>
         </android.support.constraint.ConstraintLayout>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 

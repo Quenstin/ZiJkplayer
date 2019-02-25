@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.example.zijkplayer.voidplayer.VideoViewManager
 import com.kotlin.mkotlin.R
 import com.kotlin.mkotlin.adapter.AutoRecycleAdapter
@@ -41,10 +42,12 @@ class HomeFragment : BaseFragment() {
 
     override fun initView() {
         val layoutManager = LinearLayoutManager(this.activity)
-
-
         zrcView.layoutManager = layoutManager
-        zrcView.adapter = AutoRecycleAdapter(R.layout.auto_rec, DataUtil.getVideoList())
+        val recyAdapter =AutoRecycleAdapter(R.layout.auto_rec, DataUtil.getVideoList())
+        recyAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN)
+        recyAdapter.isFirstOnly(false)
+        zrcView.adapter = recyAdapter
+
         zrcView.addOnChildAttachStateChangeListener(object : RecyclerView.OnChildAttachStateChangeListener {
             override fun onChildViewDetachedFromWindow(p0: View) {
                 val ijkview = p0.video_player
