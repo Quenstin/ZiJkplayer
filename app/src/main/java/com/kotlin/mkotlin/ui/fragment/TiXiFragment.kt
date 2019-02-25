@@ -1,5 +1,6 @@
 package com.kotlin.mkotlin.ui.fragment
 
+import android.util.Log
 import android.view.MenuItem
 import com.example.zijkplayer.voidcontroller.LiveVideoController
 import com.example.zijkplayer.voidplayer.IjkVideoView
@@ -14,7 +15,10 @@ import kotlinx.android.synthetic.main.fragment_tixi.*
  * 作用:直播
  */
 class TiXiFragment : BaseFragment() {
+    //标志位，标志已经初始化完成
+    var isInit = false
     var controller: LiveVideoController? = null
+    protected var mHasLoadedOnce: Boolean = false
     private val LIVE_URL = "http://ivi.bupt.edu.cn/hls/cctv6.m3u8"
 
 
@@ -27,19 +31,16 @@ class TiXiFragment : BaseFragment() {
         controller?.setLive()
         zLiveView.setPlayerConfig(PlayerConfig.Builder()
                 .autoRotate()//自动旋转屏幕
-//                    .enableCache()//启用边播边存
-                .enableMediaCodec()//启动硬解码
-//                    .usingSurfaceView()//使用SurfaceView
-//                    .setCustomMediaPlayer(new ExoMediaPlayer(this))
-//                    .setCustomMediaPlayer(new AndroidMediaPlayer(this))
                 .build())
         zLiveView.setScreenScale(IjkVideoView.SCREEN_SCALE_16_9)
         zLiveView.setUrl(LIVE_URL)
         zLiveView.setVideoController(controller)
-        zLiveView.start()
+//        zLiveView.start()
     }
 
     override fun initView() {
+        isInit = true
+        isCanLoadData()
     }
 
     override fun initLoad() {
@@ -49,40 +50,64 @@ class TiXiFragment : BaseFragment() {
         return R.layout.fragment_tixi
     }
 
-    override fun onPause() {
-        super.onPause()
-        zLiveView.pause()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        zLiveView.resume()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        zLiveView.release()
-    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             activity!!.finish()
+            if (zLiveView.isPlaying){
+                zLiveView.stopPlayback()
+                zLiveView.release()
+                Log.e("播放器","----------stop--")
+
+            }
         }
         return super.onOptionsItemSelected(item)
     }
 
 
-
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
+        Log.e("播放器","----------ss--")
+
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        isCanLoadData()
         if (zLiveView != null)
             if (isVisibleToUser) {
-                if (zLiveView.isPlaying)
-                    zLiveView.release()
+                zLiveView.start()
+                Log.e("播放器","----------star--")
+
 
             } else {
-                zLiveView.start()
+                if (zLiveView.isPlaying){
+                    zLiveView.stopPlayback()
+                    zLiveView.release()
+                    Log.e("播放器","----------stop--")
+
+                }
+
+
             }
+
+    }
+
+    /**
+     * 禁止预加载
+     */
+    private fun isCanLoadData() {
+        if (!isInit) {
+            return
+        }
+        if (getUserVisibleHint() && !mHasLoadedOnce) {
+            loadData()
+        }
+    }
+
+    fun loadData() {
+        //数据加载成功后
+        mHasLoadedOnce = true
     }
 
 

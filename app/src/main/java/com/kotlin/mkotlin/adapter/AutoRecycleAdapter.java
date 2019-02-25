@@ -2,10 +2,15 @@ package com.kotlin.mkotlin.adapter;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.example.zijkplayer.voidcontroller.LiveVideoController;
+import com.example.zijkplayer.voidplayer.IjkVideoView;
+import com.example.zijkplayer.voidplayer.PlayerConfig;
+import com.kotlin.mkotlin.R;
 import com.kotlin.mkotlin.bean.VideoBean;
 import com.kotlin.mkotlin.utlis.GlideApp;
 import com.kotlin.mkotlin.utlis.ZGlideModule;
@@ -19,24 +24,39 @@ import java.util.List;
  */
 public class AutoRecycleAdapter extends BaseQuickAdapter<VideoBean, BaseViewHolder> {
     private List<VideoBean> mBeans;
-    private Context mContext;
+    private IjkVideoView ijkVideoView;
+    private LiveVideoController controller;
+    private TextView title;
+    private PlayerConfig mPlayerConfig;
 
 
-    public AutoRecycleAdapter(int layoutResId, @Nullable List<VideoBean> data,Context context) {
+    public AutoRecycleAdapter(int layoutResId, @Nullable List<VideoBean> data) {
         super(layoutResId, data);
         this.mBeans=data;
-        this.mContext=context;
 
     }
 
     @Override
     protected void convert(BaseViewHolder helper, VideoBean item) {
-        VideoBean videoBean=mBeans.get(helper.getLayoutPosition());
+        ijkVideoView=new IjkVideoView(mContext);
+        controller=new LiveVideoController(mContext);
+        mPlayerConfig = new PlayerConfig.Builder()
+                .autoRotate()
+                .addToPlayerManager()//required
+//                        .savingProgress()
+                .build();
+        GlideApp.with(mContext)
+                .load(item.getThumb())
+                .placeholder(android.R.color.white)
+                .into(controller.getThumb());
 
-//        GlideApp.with(mContext)
-//                .load(videoBean.getThumb())
-//                .placeholder(android.R.color.white)
-//                .into(helper.getView(0));
+        IjkVideoView ijkVideoView=helper.getView(R.id.video_player);
+        TextView textView=helper.getView(R.id.tv_title);
+        ijkVideoView.setPlayerConfig(mPlayerConfig);
+        ijkVideoView.setUrl(item.getThumb());
+        ijkVideoView.setTitle(item.getTitle());
+        ijkVideoView.setVideoController(controller);
+        textView.setText(item.getTitle());
 
 
     }
