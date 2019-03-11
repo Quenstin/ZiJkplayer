@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.example.zijkplayer.voidplayer.IjkVideoView
         android:id="@+id/zLiveView"
@@ -10,31 +11,29 @@
         android:layout_height="200dp"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtView0"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:background="@color/min_bunk"
-        android:gravity="center"
-        android:text="聊天室"
-        android:textColor="@color/white"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/txtView1"
-        app:layout_constraintTop_toBottomOf="@+id/zLiveView" />
-
-    <TextView
-        android:id="@+id/txtView1"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:background="@color/min_bunk"
-        android:gravity="center"
-        android:text="排行榜"
-        android:textColor="@color/red"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintLeft_toRightOf="@+id/txtView0"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/zLiveView" />
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/stkTablayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/royalblue"
+        app:tl_divider_color="@color/royalblue"
+        app:tl_divider_padding="13dp"
+        app:tl_divider_width="1dp"
+        app:tl_indicator_color="@color/royalblue"
+        app:tl_indicator_height="1.5dp"
+        app:tl_tab_padding="38dp"
+        app:tl_tab_space_equal="false"
+        app:tl_textSelectColor="@color/white"
+        app:tl_textUnselectColor="#000000"
+        app:tl_underline_color="#FFFFFF"
+        app:tl_underline_height="1dp"
+        />
 
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpInformation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>

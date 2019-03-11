@@ -65,6 +65,8 @@ dependencies {
 
     //相机库
     implementation 'com.github.vondear.RxTool:RxCamera:v2.2.7'
+    //头部导航栏
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
 
     implementation project(':zijkplayer')
     implementation project(':zplayer-arm64')

@@ -4,11 +4,12 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.view.PagerAdapter
+import com.kotlin.mkotlin.base.BaseFragment
 
 /**
  * 创建作者:zhuguoqing
  * 创建日期:2019/1/5
- * 作用:
+ * 作用: ArrayList<Fragment> fragments, String[] titleTabs
  */
 class MainViewPagerAdapter(framentm:FragmentManager) : FragmentStatePagerAdapter(framentm) {
 

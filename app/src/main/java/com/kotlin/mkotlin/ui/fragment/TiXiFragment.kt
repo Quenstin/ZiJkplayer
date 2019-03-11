@@ -6,6 +6,7 @@ import com.example.zijkplayer.voidcontroller.LiveVideoController
 import com.example.zijkplayer.voidplayer.IjkVideoView
 import com.example.zijkplayer.voidplayer.PlayerConfig
 import com.kotlin.mkotlin.R
+import com.kotlin.mkotlin.adapter.TiXiFragmentPagerAdapter
 import com.kotlin.mkotlin.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_tixi.*
 
@@ -20,6 +21,7 @@ class TiXiFragment : BaseFragment() {
     var controller: LiveVideoController? = null
     var mHasLoadedOnce: Boolean = false
     private val LIVE_URL = "http://ivi.bupt.edu.cn/hls/cctv6.m3u8"
+
 
 
     companion object {
@@ -40,9 +42,20 @@ class TiXiFragment : BaseFragment() {
     override fun initView() {
         isInit = true
         isCanLoadData()
+
+
+
     }
 
     override fun initLoad() {
+        var fragments= arrayListOf<BaseFragment>().apply {
+            add(ChatFragment.getChatFragment())
+            add(RankIngFragment.getRankFragment())
+        }
+
+        var adapter =TiXiFragmentPagerAdapter(this.fragmentManager!!,fragments)
+        vpInformation.adapter=adapter
+        stkTablayout.setViewPager(vpInformation)
     }
 
     override fun initLayoutResID(): Int {
@@ -101,12 +114,12 @@ class TiXiFragment : BaseFragment() {
         if (!isInit) {
             return
         }
-        if (getUserVisibleHint() && !mHasLoadedOnce) {
+        if (userVisibleHint && !mHasLoadedOnce) {
             loadData()
         }
     }
 
-    fun loadData() {
+    private fun loadData() {
         //数据加载成功后
         mHasLoadedOnce = true
     }
